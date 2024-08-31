@@ -1,6 +1,6 @@
 public class Tokenizer {
     public static void main(String[] args) {
-        String user_input = "Hello,_I_am_Zachary_Ian_P._Bautista!_I_am_gay_3.0._this_is_my_phone_number_0969-662-4210._Kent_is_the_best_programmer._He_coded_all_of_this_with_no_help_whatsoever._wow123";
+        String user_input = "Hello,_I_am_Zachary_Ian_P. Bautista!_I_am_gay_3.0._this_is_my_phone_number_0969-662-4210._Kent_is_the_best_programmer._He_coded_all_of_this_with_no_help_whatsoever._wow123";
         // Remove underscore sa input
         String[] parts = user_input.split("_");
 
@@ -86,7 +86,7 @@ public class Tokenizer {
                     hasDigits = true; //set true
                 } else if (Character.isAlphabetic(tokenChar)) {
                     hasLetter = true; //set true
-                } else {
+                } else if (!s.matches("[a-zA-Z0-9 ]+")){
                     hasSpecial = true; //set true
                 }
             }
@@ -97,11 +97,11 @@ public class Tokenizer {
             } else if (hasLetter && !hasSpecial) { //pag letter lang
                 System.out.println("Token\t: \"" + s + "\" - Type: Word");
 
-            } else if (hasDigits | !hasSpecial) { //pag digit and decimal
+            } else if (!s.equals(" ")&&hasDigits | !hasSpecial) { //pag digit and decimal
                 //punctuation ang type ng 3.0 ganiha so gi OR (|) nako ambot if tama
                 System.out.println("Token\t: \"" + s + "\" - Type: Number");
 
-            }  else { //special child
+            }  else if (!s.equals(" ")){ //special child
                 System.out.println("Token\t: \"" + s + "\" - Type: Punctuation");
 
             }
@@ -113,11 +113,10 @@ public class Tokenizer {
         for (String token : array) {
             if (!token.matches("[a-zA-Z0-9]+")) { //remove special characters
                 if (token.matches("[0-9]+\\.[0-9]+")){ //decimal regex para dili maapil ang decimals sa remove special
-                    continue;
+
                 }else{
                     continue;
                 }
-
             }
             StringBuilder result = new StringBuilder("Token\t: \"" + token + "\"\t->\t"); //output na i print
             for (int i = 0; i < token.length(); i++) { //add
