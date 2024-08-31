@@ -40,9 +40,9 @@ public class Tokenizer {
 
         }
 
-        System.out.println("---------\t Phase 1 \t---------");
+        System.out.println("----------\t Phase 1 \t----------");
         phase1(array);
-        System.out.println("---------\t Phase 2 \t---------");
+        System.out.println("----------\t Phase 2 \t----------");
         phase2(array);
     }
 
