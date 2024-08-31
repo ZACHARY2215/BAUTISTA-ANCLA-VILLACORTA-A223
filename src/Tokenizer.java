@@ -4,7 +4,7 @@ public class Tokenizer {
         // Remove underscore sa input
         String[] parts = user_input.split("_");
 
-        // index counter
+        // index counter for the array
         int indexCount = 0;
         for (String part : parts) {
             indexCount += countElements(part);
@@ -15,7 +15,7 @@ public class Tokenizer {
         int index = 0;
 
         // separate special characters na dikit
-        for (String part : parts) {
+        for (String part : parts) { //shortcut sa for loop since di man gamiton ang index
             StringBuilder hold = new StringBuilder();
             for (int i = 0; i < part.length(); i++) {
                 char c = part.charAt(i);
