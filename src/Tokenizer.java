@@ -48,7 +48,7 @@ public class Tokenizer {
     // counter
     private static int countElements(String part) {
         int count = 0;
-        StringBuilder hold = new StringBuilder(); //unnecessary, dili diay
+        StringBuilder hold = new StringBuilder();
         for (int i = 0; i < part.length(); i++) {
             char c = part.charAt(i);
 
