@@ -1,19 +1,19 @@
 public class Tokenizer {
     public static void main(String[] args) {
-        String user_input = "Hello, my name is Kent Ancla. I am gay 3.0. this is my phone_number_0969-662-4210";
+        String user_input = "Hello,_I_am_Zachary_Ian_P._Bautista!_I_am_gay_3.0._this_is_my_phone_number_0969-662-4210._Kent_is_the_best_programmer._He_coded_all_of_this_with_no_help_whatsoever._wow123";
         // Remove underscore sa input
         String[] parts = user_input.split("_");
-
+        
         // index counter for the array
         int indexCount = 0;
         for (String part : parts) {
             indexCount += countElements(part);
         }
-
+        
         // set number of index sa array
         String[] array = new String[indexCount];
         int index = 0;
-
+        
         // separate special characters na dikit
         for (String part : parts) { //shortcut sa for loop since di man gamiton ang index
             StringBuilder hold = new StringBuilder();
@@ -37,6 +37,7 @@ public class Tokenizer {
             if (!hold.isEmpty()) {
                 array[index++] = hold.toString(); // Add the last word/number
             }
+            
         }
 
         System.out.println("---------\t Phase 1 \t---------");
@@ -71,10 +72,10 @@ public class Tokenizer {
         }
         return count;
     }
-
+    
 
     public static void phase1(String[] array) {
-        int end=0;
+
         for (String s : array) {
             boolean hasDigits = false; //pang determine if naa digit/letter/special character ang token
             boolean hasLetter = false;
@@ -85,35 +86,38 @@ public class Tokenizer {
                     hasDigits = true; //set true
                 } else if (Character.isAlphabetic(tokenChar)) {
                     hasLetter = true; //set true
-                } else if (tokenChar == ',' | tokenChar == '!' | tokenChar == '@' | tokenChar == '-' | tokenChar == '#' | tokenChar == '$' |  //best coder
-                        tokenChar == '%' | tokenChar == '^' | tokenChar == '(' | tokenChar == ')' | tokenChar == '.') {
+                } else {
                     hasSpecial = true; //set true
                 }
             }
+
             if (hasLetter && hasDigits && !hasSpecial) { //if naa letter and number tas wala special char
                 System.out.println("Token\t: \"" + s + "\" - Type: AlphaNumeric");
-                end++;
+                
             } else if (hasLetter && !hasSpecial) { //pag letter lang
                 System.out.println("Token\t: \"" + s + "\" - Type: Word");
-                end++;
-            } else if (hasDigits && !hasSpecial) { //pag digit lang
+                
+            } else if (hasDigits | !hasSpecial) { //pag digit and decimal              
+                //punctuation ang type ng 3.0 ganiha so gi OR (|) nako ambot if tama
                 System.out.println("Token\t: \"" + s + "\" - Type: Number");
-                end++;
-            } else if (hasSpecial){ //special child
+                
+            }  else if (hasSpecial){ //special child
                 System.out.println("Token\t: \"" + s + "\" - Type: Punctuation");
-                end++;
-            }
-            if(end>= array.length){ //if end na sa array mag print
-                System.out.println("Token\t: \"\\n\" - Type: End of Line");
-            }
-
+                
+            } 
         }
+        System.out.println("Token\t: \"\\n\" - Type: End of Line"); // nasa sulod ni sa for loop ganiha gigawas ra nako kay wa naprint
     }
 
     public static void phase2(String[] array) {
         for (String token : array) {
             if (!token.matches("[a-zA-Z0-9]+")) { //remove special characters
-                continue;
+                if (token.matches("[0-9]+\\.[0-9]+")){ //decimal regex para dili maapil ang decimals sa remove special
+                    ; //do nothing
+                }else{
+                    continue;
+                }
+
             }
             StringBuilder result = new StringBuilder("Token\t: \"" + token + "\"\t->\t"); //output na i print
             for (int i = 0; i < token.length(); i++) { //add
@@ -126,4 +130,3 @@ public class Tokenizer {
         }
     }
 }
-
