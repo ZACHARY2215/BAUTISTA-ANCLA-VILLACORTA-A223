@@ -1,6 +1,6 @@
 public class Tokenizer {
     public static void main(String[] args) {
-        String user_input = "Hello,_I_am_Zachary_Ian_P. Bautista!_I_am_gay_3.0._this_is_my_phone_number_0969-662-4210._Kent_is_the_best_programmer._He_coded_all_of_this_ with_no_help_whatsoe ver._wow123";
+        String user_input = "Hello,_I_am_Zachary_Ian_P. Bautista_3.0!_this_is_my_phone_number_0969-662-4210._Kent_is_the_best_programmer._He_coded_all_of_this_ with_no_help_whatsoe ver._wow123";
         // Remove underscore sa input
         String[] parts = user_input.split("_");
 
