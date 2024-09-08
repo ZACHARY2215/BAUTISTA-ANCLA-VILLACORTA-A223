@@ -113,7 +113,7 @@ public class Tokenizer {
         for (String token : array) {
             if (!token.matches("[a-zA-Z0-9]+")) { //remove special characters
                 if (token.matches("[0-9]+\\.[0-9]+")){ //decimal regex para dili maapil ang decimals sa remove special
-
+                    //empty
                 }else{
                     continue;
                 }
